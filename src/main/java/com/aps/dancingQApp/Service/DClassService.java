@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -22,6 +23,13 @@ public class DClassService {
     }
 
     public DClassDTO newDClass(DClassDTO input) throws DClassException {
+
+        Optional<DClass> dClassOpt = dClassRepo.findByClassName(input.getClassName());
+
+        if(dClassOpt.isPresent()) {
+            log.info("Class already exist");
+            return DClassMapper.toDTO(dClassOpt.get());
+        }
 
         log.info("Creating new Dance Class for {}", input);
 

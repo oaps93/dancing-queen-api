@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -27,6 +28,12 @@ public class InstructorService {
     }
 
     public InstructorDTO newInstructor(InstructorDTO input) throws InstructorException {
+
+        Optional<Instructor> instructorOpt = instructorRepo.findByName(input.getName());
+        if(instructorOpt.isPresent()) {
+            log.info("Instructor name exist");
+            return InstructorMapper.toDTO(instructorOpt.get());
+        }
 
         log.info("Creating new Instructor data for: {}",input);
 
