@@ -1,10 +1,7 @@
 package com.aps.dancingQApp.Model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
@@ -21,10 +18,16 @@ public class Instructor {
     private Long id;
     private String name;
     private String age;
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(fetch = FetchType.EAGER,cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "instructor_dclass",
-            joinColumns = {@JoinColumn(name = "instructor_id")},
-            inverseJoinColumns = {@JoinColumn(name = "dclass_id")})
-    private Set<DanceClass> classes;
+            joinColumns = {@JoinColumn(name = "instructor_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "dclass_id", referencedColumnName = "id")})
+    @EqualsAndHashCode.Exclude
+    private Set<DClass> classes;
+
+    public void addClass(DClass dClass) {
+        this.classes.add(dClass);
+        dClass.getInstructors().add(this); // Bidirectional relationship
+    }
 }
