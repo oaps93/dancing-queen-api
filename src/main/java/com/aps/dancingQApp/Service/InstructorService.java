@@ -28,7 +28,7 @@ public class InstructorService {
     }
 
     public InstructorDTO newInstructor(InstructorDTO input) throws InstructorException {
-
+        //Prevent duplication
         Optional<Instructor> instructorOpt = instructorRepo.findByName(input.getName());
         if(instructorOpt.isPresent()) {
             log.info("Instructor name exist");

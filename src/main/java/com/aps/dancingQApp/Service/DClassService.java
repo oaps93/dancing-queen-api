@@ -23,9 +23,8 @@ public class DClassService {
     }
 
     public DClassDTO newDClass(DClassDTO input) throws DClassException {
-
+        //Prevent duplication
         Optional<DClass> dClassOpt = dClassRepo.findByClassName(input.getClassName());
-
         if(dClassOpt.isPresent()) {
             log.info("Class already exist");
             return DClassMapper.toDTO(dClassOpt.get());
