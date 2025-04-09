@@ -1,4 +1,4 @@
-########## dancingQApp ###########
+########## dancing-queen-api ###########
 
 This will provide the services required to run DancingQueenApp.
 
