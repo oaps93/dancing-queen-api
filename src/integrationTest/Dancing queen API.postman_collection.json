@@ -1,0 +1,140 @@
+{
+	"info": {
+		"_postman_id": "775c95ba-6872-4d6c-bea6-b737310c7425",
+		"name": "Dancing queen API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21158603"
+	},
+	"item": [
+		{
+			"name": "New Instructor Request - Happy Path",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Martina\",\r\n    \"age\": \"19\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/instructors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instructors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all instructors",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/instructors",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instructors"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New class Request - Happy Path",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"className\": \"Urbano\",\r\n    \"level\": \"Fresher\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/classes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"classes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New class Request - Happy Path Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/instructors/Martina/classes?className=Urbano",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"instructors",
+						"Martina",
+						"classes"
+					],
+					"query": [
+						{
+							"key": "className",
+							"value": "Urbano"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all classes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/classes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"classes"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
