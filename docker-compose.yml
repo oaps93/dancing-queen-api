@@ -25,5 +25,13 @@ services:
     ports:
       - "8080:8080"
 
+  web:
+    image: dq_ui
+    container_name: dq_ui_nw
+    depends_on:
+      - spring-api
+    ports:
+      - "3000:3000"
+
 volumes:
   postgres_data:
